@@ -1,0 +1,1325 @@
+{
+    "openapi": "3.0.3",
+    "info": {
+      "title": "HARBER API DOCUMENTATION",
+      "description": "",
+      "version": "1.0.0",
+      "contact": {}
+    },
+    "servers": [
+      {
+        "url": "https://postman-echo.com"
+      }
+    ],
+    "paths": {
+        "/plants": {
+            "get": {
+              "description": "Returns all plants from the system that the user has access to",
+              "parameters": [
+                {
+                  "name": "limit",
+                  "in": "query",
+                  "description": "The maximum number of results to return",
+                  "schema": {
+                    "type": "integer",
+                    "format": "int32"
+                  }
+                }
+              ],
+              "responses": {
+                "200": {
+                  "description": "Plant response",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/Plant"
+                        }
+                      }
+                    }
+                  }
+                },
+                "400": {
+                  "description": "Unexpected error",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "$ref": "#/components/schemas/Error"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "post": {
+              "description": "Creates a new plant in the store",
+              "requestBody": {
+                "description": "Plant to add to the store",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/NewPlant"
+                    }
+                  }
+                },
+                "required": true
+              },
+              "responses": {
+                "200": {
+                  "description": "plant response",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "$ref": "#/components/schemas/Plant"
+                      }
+                    }
+                  }
+                },
+                "400": {
+                  "description": "unexpected error",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "$ref": "#/components/schemas/Error"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+      "/aset/kategori": {
+        "get": {
+          "tags": [
+            "KATEGORI"
+          ],
+          "summary": "GET ALL KATEGORI",
+          "description": "",
+          "operationId": "getasetkategori",
+          "parameters": [],
+          "responses": {
+            "200": {
+              "description": "GET ALL KATEGORI",
+              "content": {
+                "application/json; charset=UTF-8": {
+                  "schema": {
+                    "type": "object",
+                    "example": {
+                      "success": true,
+                      "status": 200,
+                      "message": "Get Data Berhasil",
+                      "data": [
+                        {
+                          "id": "1",
+                          "nama": "Kategori",
+                          "created_at": "2023-10-06 15:12:42",
+                          "updated_at": "2023-10-06 15:12:42",
+                          "deleted_at": null,
+                          "time_stamp": null,
+                          "subkategori": [
+                            {
+                              "id_sub_kategori": "1",
+                              "id_kategori": "1",
+                              "id_satker": "100001",
+                              "nama": "sub kategori",
+                              "kode": "KDN",
+                              "created_at": "2023-10-06 15:12:42",
+                              "updated_at": "2023-10-06 15:12:42",
+                              "deleted_at": null,
+                              "time_stamp": null
+                            }
+                          ]
+                        },
+                        {
+                          "id": "3",
+                          "nama": "Kategori2",
+                          "created_at": "2023-10-06 16:05:49",
+                          "updated_at": "2023-10-06 16:05:49",
+                          "deleted_at": null,
+                          "time_stamp": null,
+                          "subkategori": [
+                            {
+                              "id_sub_kategori": "3",
+                              "id_kategori": "3",
+                              "id_satker": "100001",
+                              "nama": "sub kategori 2",
+                              "kode": "KDNT",
+                              "created_at": "2023-10-06 16:05:49",
+                              "updated_at": "2023-10-06 16:05:49",
+                              "deleted_at": null,
+                              "time_stamp": null
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/aset/kategori/create": {
+        "post": {
+          "tags": [
+            "KATEGORI"
+          ],
+          "summary": "CREATE KATEGORI",
+          "description": "",
+          "operationId": "postasetkategoricreate",
+          "parameters": [],
+          "responses": {
+            "200": {
+              "description": "Successful response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "example": {}
+                  }
+                }
+              }
+            }
+          },
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "example": [
+                    {
+                      "nama": "Kategori5",
+                      "sub_kategori": [
+                        {
+                          "nama": "sub kategori 5",
+                          "id_satker": "100001",
+                          "kode": "WANT"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      },
+      "/aset/kategori/store": {
+        "post": {
+          "tags": [
+            "KATEGORI"
+          ],
+          "summary": "STORE KATEGORI",
+          "description": "",
+          "operationId": "postasetkategoristore",
+          "parameters": [],
+          "responses": {
+            "200": {
+              "description": "Successful response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "example": {}
+                  }
+                }
+              }
+            }
+          },
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "example": [
+                    {
+                      "kategori": [
+                        {
+                          "update": [
+                            {
+                              "id": 4,
+                              "nama": "kategori update 4"
+                            }
+                          ],
+                          "delete": [
+                            {
+                              "id": 1
+                            }
+                          ]
+                        }
+                      ],
+                      "sub_kategori": [
+                        {
+                          "create": [
+                            {
+                              "kode": "JNT4",
+                              "id_kategori": "6",
+                              "id_satker": "100001",
+                              "nama": "create sub in 6"
+                            }
+                          ],
+                          "update": [
+                            {
+                              "id_sub_kategori": "6",
+                              "nama": "create update"
+                            }
+                          ],
+                          "delete": [
+                            {
+                              "id_sub_kategori": "7"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      },
+      "/aset/daftar": {
+        "get": {
+          "tags": [
+            "DAFTAR ASET"
+          ],
+          "summary": "GET ALL DAFTAR ASET",
+          "description": "",
+          "operationId": "getasetdaftar",
+          "parameters": [],
+          "responses": {
+            "200": {
+              "description": "Successful response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "example": {}
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/aset/daftar/listKategori": {
+        "get": {
+          "tags": [
+            "DAFTAR ASET"
+          ],
+          "summary": "GET DROPDOWN LIST KATEGORI",
+          "description": "",
+          "operationId": "getasetdaftarlistKategori",
+          "parameters": [],
+          "responses": {
+            "200": {
+              "description": "Successful response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "example": {}
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/aset/daftar/getListFiltter": {
+        "post": {
+          "tags": [
+            "DAFTAR ASET"
+          ],
+          "summary": "GET LIST FILLTER",
+          "description": "",
+          "operationId": "postasetdaftargetListFiltter",
+          "parameters": [],
+          "responses": {
+            "200": {
+              "description": "Successful response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "example": {}
+                  }
+                }
+              }
+            }
+          },
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "example": {
+                    "id_kategori": 1
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/aset/daftar/store": {
+        "post": {
+          "tags": [
+            "BACKLOG ASET"
+          ],
+          "summary": "STORE DAFTAR ASET Copy",
+          "description": "",
+          "operationId": "postasetdaftarstore",
+          "parameters": [],
+          "responses": {
+            "200": {
+              "description": "Successful response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "example": {}
+                  }
+                }
+              }
+            }
+          },
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "example": {
+                    "delete": [
+                      {
+                        "id_daftar_aset": "3684"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/aset/daftar/hitungsusut": {
+        "post": {
+          "tags": [
+            "DAFTAR ASET"
+          ],
+          "summary": "Generate All Nilai Susust",
+          "description": "",
+          "operationId": "postasetdaftarhitungsusut",
+          "parameters": [],
+          "responses": {
+            "200": {
+              "description": "Successful response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "example": {}
+                  }
+                }
+              }
+            }
+          },
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "example": {
+                    "id_satker": 100001,
+                    "show_data_update": true
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/aset/perolehan": {
+        "get": {
+          "tags": [
+            "PEROLEHAN AKUN"
+          ],
+          "summary": "GET PEROLEHAN AKUN",
+          "description": "",
+          "operationId": "getasetperolehan",
+          "parameters": [],
+          "responses": {
+            "200": {
+              "description": "Successful response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "example": {}
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/aset/perolehan/listakun": {
+        "get": {
+          "tags": [
+            "PEROLEHAN AKUN"
+          ],
+          "summary": "GET LIST AKUN",
+          "description": "",
+          "operationId": "getasetperolehanlistakun",
+          "parameters": [],
+          "responses": {
+            "200": {
+              "description": "Successful response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "example": {}
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/aset/perolehan/store": {
+        "post": {
+          "tags": [
+            "PEROLEHAN AKUN"
+          ],
+          "summary": "STORE PEROLEHAN ASET AKUN",
+          "description": "",
+          "operationId": "postasetperolehanstore",
+          "parameters": [],
+          "responses": {
+            "200": {
+              "description": "Successful response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "example": {}
+                  }
+                }
+              }
+            }
+          },
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "example": {
+                    "create": [
+                      {
+                        "id_subkategori": "3",
+                        "id_akun": "152"
+                      }
+                    ],
+                    "update": [
+                      {
+                        "id_subkategori": "3",
+                        "id_akun": "157",
+                        "id_perolehan": "3"
+                      }
+                    ],
+                    "delete": [
+                      {
+                        "id_perolehan": "3"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/aset/penyusutan": {
+        "get": {
+          "tags": [
+            "PENYUSUTAN AKUN"
+          ],
+          "summary": "GET PENYUSUTAN AKUN",
+          "description": "",
+          "operationId": "getasetpenyusutan",
+          "parameters": [],
+          "responses": {
+            "200": {
+              "description": "Successful response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "example": {}
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/aset/penyusutan/listakun": {
+        "get": {
+          "tags": [
+            "PENYUSUTAN AKUN"
+          ],
+          "summary": "GET LIST AKUN",
+          "description": "",
+          "operationId": "getasetpenyusutanlistakun",
+          "parameters": [],
+          "responses": {
+            "200": {
+              "description": "Successful response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "example": {}
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/aset/penyusutan/store": {
+        "post": {
+          "tags": [
+            "PENYUSUTAN AKUN"
+          ],
+          "summary": "STORE PEROLEHAN ASET AKUN",
+          "description": "",
+          "operationId": "postasetpenyusutanstore",
+          "parameters": [],
+          "responses": {
+            "200": {
+              "description": "Successful response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "example": {}
+                  }
+                }
+              }
+            }
+          },
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "example": {
+                    "create": [
+                      {
+                        "id_subkategori": "3",
+                        "id_akun": "174"
+                      }
+                    ],
+                    "update": [
+                      {
+                        "id_subkategori": "3",
+                        "id_akun": "184",
+                        "id_penyusutan": "1"
+                      }
+                    ],
+                    "delete": [
+                      {
+                        "id_penyusutan": "1"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/aset/daftar/hitungakhir": {
+        "post": {
+          "tags": [
+            "BACKLOG ASET"
+          ],
+          "summary": "Nilai  Akhir",
+          "description": "",
+          "operationId": "postasetdaftarhitungakhir",
+          "parameters": [],
+          "responses": {
+            "200": {
+              "description": "Successful response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "example": {}
+                  }
+                }
+              }
+            }
+          },
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "example": {
+                    "id_satker": 100001,
+                    "show_data_update": true
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/logistik/kategori": {
+        "get": {
+          "tags": [
+            "KATEGORI"
+          ],
+          "summary": "GET KATEGORI LOGISTIK",
+          "description": "",
+          "operationId": "getlogistikkategori",
+          "parameters": [],
+          "responses": {
+            "200": {
+              "description": "Successful response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "example": {}
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/logistik/kategori/create": {
+        "post": {
+          "tags": [
+            "KATEGORI"
+          ],
+          "summary": "CREATE LOGISTIK",
+          "description": "",
+          "operationId": "postlogistikkategoricreate",
+          "parameters": [],
+          "responses": {
+            "200": {
+              "description": "Successful response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "example": {}
+                  }
+                }
+              }
+            }
+          },
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "example": [
+                    {
+                      "nama": "Logistik",
+                      "sub_kategori": [
+                        {
+                          "nama": "sub logistik",
+                          "id_satker": "100001",
+                          "kode": "WANT"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      },
+      "/logistik/kategori/store": {
+        "post": {
+          "tags": [
+            "KATEGORI"
+          ],
+          "summary": "STORE LOGISTIK",
+          "description": "",
+          "operationId": "postlogistikkategoristore",
+          "parameters": [],
+          "responses": {
+            "200": {
+              "description": "Successful response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "example": {}
+                  }
+                }
+              }
+            }
+          },
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "example": [
+                    {
+                      "kategori": [
+                        {
+                          "update": [
+                            {
+                              "id": 4,
+                              "nama": "kategori update 4"
+                            }
+                          ],
+                          "delete": [
+                            {
+                              "id": 1
+                            }
+                          ]
+                        }
+                      ],
+                      "sub_kategori": [
+                        {
+                          "create": [
+                            {
+                              "kode": "JNT4",
+                              "id_kategori": "6",
+                              "id_satker": "100001",
+                              "nama": "create sub in 6"
+                            }
+                          ],
+                          "update": [
+                            {
+                              "id_sub_kategori": "6",
+                              "nama": "create update"
+                            }
+                          ],
+                          "delete": [
+                            {
+                              "id_sub_kategori": "7"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      },
+      "/logistik/daftar/store": {
+        "post": {
+          "tags": [
+            "DAFTAR LOGISTIK"
+          ],
+          "summary": "STORE DAFTAR ASET Copy 2",
+          "description": "",
+          "operationId": "postlogistikdaftarstore",
+          "parameters": [],
+          "responses": {
+            "200": {
+              "description": "Successful response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "example": {}
+                  }
+                }
+              }
+            }
+          },
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "example": {
+                    "daftar": [
+                      {
+                        "delete": {
+                          "id_daftar_logis": "4"
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/logistik/daftar/create": {
+        "post": {
+          "tags": [
+            "DAFTAR LOGISTIK"
+          ],
+          "summary": "CREATE DAFTAR LOGISTIK",
+          "description": "",
+          "operationId": "postlogistikdaftarcreate",
+          "parameters": [],
+          "responses": {
+            "200": {
+              "description": "Successful response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "example": {}
+                  }
+                }
+              }
+            }
+          },
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "example": {
+                    "id_subkategori": "1",
+                    "id_gudang": "3",
+                    "nama": "ROKOK1",
+                    "perolehan": [
+                      {
+                        "tanggal": "2023-10-05",
+                        "nilai_satuan": "200000",
+                        "jumlah": "10",
+                        "pemakaian": {
+                          "tanggal": "2023-10-05",
+                          "jumlah": "7"
+                        }
+                      },
+                      {
+                        "tanggal": "2023-10-05",
+                        "nilai_satuan": "200000",
+                        "jumlah": "10",
+                        "pemakaian": {
+                          "tanggal": "2023-10-05",
+                          "jumlah": "2"
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/logistik/daftar": {
+        "get": {
+          "tags": [
+            "BACKLOG LOGISITIK"
+          ],
+          "summary": "GET REQ Copy",
+          "description": "",
+          "operationId": "getlogistikdaftar",
+          "parameters": [],
+          "responses": {
+            "200": {
+              "description": "Successful response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "example": {}
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/logistik/daftar/fillter": {
+        "post": {
+          "tags": [
+            "DAFTAR LOGISTIK"
+          ],
+          "summary": "GET FILLTER DAFTAR LOGISTIK",
+          "description": "",
+          "operationId": "postlogistikdaftarfillter",
+          "parameters": [],
+          "responses": {
+            "200": {
+              "description": "Successful response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "example": {}
+                  }
+                }
+              }
+            }
+          },
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "example": {
+                    "id_kategori": null,
+                    "id_gudang": 3
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/logistik/daftar/show/3": {
+        "post": {
+          "tags": [
+            "DAFTAR LOGISTIK"
+          ],
+          "summary": "GET BY ID DAFTAR LOGISTIK",
+          "description": "",
+          "operationId": "postlogistikdaftarshow3",
+          "parameters": [],
+          "responses": {
+            "200": {
+              "description": "Successful response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "example": {}
+                  }
+                }
+              }
+            }
+          },
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "example": {
+                    "with_totals": true
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/logistik/gudang/store": {
+        "post": {
+          "tags": [
+            "GUDANG"
+          ],
+          "summary": "STORE GUDANG",
+          "description": "",
+          "operationId": "postlogistikgudangstore",
+          "parameters": [],
+          "responses": {
+            "200": {
+              "description": "Successful response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "example": {}
+                  }
+                }
+              }
+            }
+          },
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "example": {
+                    "create": [
+                      {
+                        "nama": "Logistik",
+                        "kode": "LOGS"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/logistik/gudang": {
+        "get": {
+          "tags": [
+            "GUDANG"
+          ],
+          "summary": "GET ALL DATA",
+          "description": "",
+          "operationId": "getlogistikgudang",
+          "parameters": [],
+          "responses": {
+            "200": {
+              "description": "Successful response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "example": {}
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/logistik/perolehan": {
+        "get": {
+          "tags": [
+            "PEROLEHAN AKUN LOGISTIK"
+          ],
+          "summary": "GET PEROLEHAN LOGISTIK",
+          "description": "",
+          "operationId": "getlogistikperolehan",
+          "parameters": [],
+          "responses": {
+            "200": {
+              "description": "Successful response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "example": {}
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/logistik/perolehan/listakun": {
+        "get": {
+          "tags": [
+            "PEROLEHAN AKUN LOGISTIK"
+          ],
+          "summary": "LIST AKUN",
+          "description": "",
+          "operationId": "getlogistikperolehanlistakun",
+          "parameters": [],
+          "responses": {
+            "200": {
+              "description": "Successful response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "example": {}
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/logistik/perolehan/store": {
+        "post": {
+          "tags": [
+            "PEROLEHAN AKUN LOGISTIK"
+          ],
+          "summary": "STORE PEROLEHAN LOGISTIK AKUN",
+          "description": "",
+          "operationId": "postlogistikperolehanstore",
+          "parameters": [],
+          "responses": {
+            "200": {
+              "description": "Successful response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "example": {}
+                  }
+                }
+              }
+            }
+          },
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "example": {
+                    "create": [
+                      {
+                        "id_subkategori": "3",
+                        "id_akun": "152"
+                      }
+                    ],
+                    "update": [
+                      {
+                        "id_subkategori": "3",
+                        "id_akun": "157",
+                        "id_perolehan": "3"
+                      }
+                    ],
+                    "delete": [
+                      {
+                        "id_perolehan": "3"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/logistik/daftar/backlog": {
+        "post": {
+          "tags": [
+            "BACKLOG LOGISITIK"
+          ],
+          "summary": "GET REQ",
+          "description": "",
+          "operationId": "postlogistikdaftarbacklog",
+          "parameters": [],
+          "responses": {
+            "200": {
+              "description": "Successful response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "example": {}
+                  }
+                }
+              }
+            }
+          },
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "example": {
+                    "id_subkategori": "1",
+                    "nama": "ROKOK1",
+                    "perolehan": [
+                      {
+                        "tanggal": "2023-10-05",
+                        "nilai_satuan": "200000",
+                        "jumlah": "10",
+                        "pemakaian": {
+                          "tanggal": "2023-10-05",
+                          "jumlah": "7"
+                        }
+                      },
+                      {
+                        "tanggal": "2023-10-05",
+                        "nilai_satuan": "200000",
+                        "jumlah": "10",
+                        "pemakaian": {
+                          "tanggal": "2023-10-05",
+                          "jumlah": "2"
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "components": {
+      "schemas": {},
+      "securitySchemes": {
+        "basicAuth": {
+          "type": "http",
+          "scheme": "basic"
+        },
+        "digestAuth": {
+          "type": "http",
+          "scheme": "digest"
+        }
+      }
+    },
+    "tags": [
+      {
+        "name": "ASET",
+        "description": ""
+      },
+      {
+        "name": "KATEGORI",
+        "description": ""
+      },
+      {
+        "name": "DAFTAR ASET",
+        "description": ""
+      },
+      {
+        "name": "PEROLEHAN AKUN",
+        "description": ""
+      },
+      {
+        "name": "PENYUSUTAN AKUN",
+        "description": ""
+      },
+      {
+        "name": "BACKLOG ASET",
+        "description": ""
+      },
+      {
+        "name": "LOGISTIK",
+        "description": ""
+      },
+      {
+        "name": "DAFTAR LOGISTIK",
+        "description": ""
+      },
+      {
+        "name": "GUDANG",
+        "description": ""
+      },
+      {
+        "name": "PEROLEHAN AKUN LOGISTIK",
+        "description": ""
+      },
+      {
+        "name": "BACKLOG LOGISITIK",
+        "description": ""
+      }
+    ]
+  }

@@ -1,0 +1,289 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "HARBER API V2",
+    "description": "",
+    "version": "1.0.0",
+    "contact": {}
+  },
+  "servers": [
+    {
+      "url": "https://api-sik.yphb.org/"
+    }
+  ],
+  "paths": {
+    "/aset/kategori/create": {
+      "post": {
+        "tags": [
+          "KATEGORI"
+        ],
+        "summary": "CREATE KATEGORI",
+        "description": "",
+        "operationId": "postasetkategoricreate",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "example": {}
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": [
+                  {
+                    "nama": "Kategori5",
+                    "sub_kategori": [
+                      {
+                        "nama": "sub kategori 5",
+                        "id_satker": "100001",
+                        "kode": "WANT"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/aset/kategori": {
+      "get": {
+        "tags": [
+          "KATEGORI"
+        ],
+        "summary": "GET ALL KATEGORI",
+        "description": "",
+        "operationId": "getasetkategori",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "GET ALL KATEGORI",
+            "content": {
+              "application/json; charset=UTF-8": {
+                "schema": {
+                  "type": "object",
+                  "example": {
+                    "success": true,
+                    "status": 200,
+                    "message": "Get Data Berhasil",
+                    "data": [
+                      {
+                        "id": "1",
+                        "nama": "Kategori",
+                        "created_at": "2023-10-06 15:12:42",
+                        "updated_at": "2023-10-06 15:12:42",
+                        "deleted_at": null,
+                        "time_stamp": null,
+                        "subkategori": [
+                          {
+                            "id_sub_kategori": "1",
+                            "id_kategori": "1",
+                            "id_satker": "100001",
+                            "nama": "sub kategori",
+                            "kode": "KDN",
+                            "created_at": "2023-10-06 15:12:42",
+                            "updated_at": "2023-10-06 15:12:42",
+                            "deleted_at": null,
+                            "time_stamp": null
+                          }
+                        ]
+                      },
+                      {
+                        "id": "3",
+                        "nama": "Kategori2",
+                        "created_at": "2023-10-06 16:05:49",
+                        "updated_at": "2023-10-06 16:05:49",
+                        "deleted_at": null,
+                        "time_stamp": null,
+                        "subkategori": [
+                          {
+                            "id_sub_kategori": "3",
+                            "id_kategori": "3",
+                            "id_satker": "100001",
+                            "nama": "sub kategori 2",
+                            "kode": "KDNT",
+                            "created_at": "2023-10-06 16:05:49",
+                            "updated_at": "2023-10-06 16:05:49",
+                            "deleted_at": null,
+                            "time_stamp": null
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/aset/daftar": {
+      "get": {
+        "tags": [
+          "ASET"
+        ],
+        "summary": "GET ALL DAFTAR ASET",
+        "description": "",
+        "operationId": "getasetdaftar",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "example": {}
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/aset/ruangan/paginate": {
+      "post": {
+        "tags": [
+          "RUANGAN"
+        ],
+        "summary": "GET DATA DAFTAR RUANGAN PAGINATE",
+        "description": "",
+        "operationId": "postasetruanganpaginate",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "example": {}
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "search": "TV LED"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/aset/ruangan/filterRuangan": {
+      "get": {
+        "tags": [
+          "RUANGAN"
+        ],
+        "summary": "GET FILTER RUNAGAN",
+        "description": "",
+        "operationId": "getasetruanganfilterRuangan",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "example": {}
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/aset/pelaporan/laporanAsetRinci": {
+      "post": {
+        "summary": "LAPORAN ASET RINCI",
+        "description": "",
+        "operationId": "postasetpelaporanlaporanAsetRinci",
+        "parameters": [
+          {
+            "name": "X-Wan-B",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "100001"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "example": {}
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "tahun": ""
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {},
+    "securitySchemes": {
+      "basicAuth": {
+        "type": "http",
+        "scheme": "basic"
+      },
+      "digestAuth": {
+        "type": "http",
+        "scheme": "digest"
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "ASET",
+      "description": ""
+    },
+    {
+      "name": "KATEGORI",
+      "description": ""
+    },
+    {
+      "name": "RUANGAN",
+      "description": ""
+    }
+  ]
+}
